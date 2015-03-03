@@ -1,0 +1,9 @@
+<h1>Welcome to Todo List 3000</h1>
+<%if current_user %>
+  <h3>Create a New List</h3>
+  <%= form_for @list do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <button>Create</button>
+  <%end %>
+<%end%>

@@ -1,7 +1,7 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
-      t.string :description, null: false
+      t.string :description
       t.belongs_to :user, index: true
       t.belongs_to :list, index: true
       t.datetime :due_date
