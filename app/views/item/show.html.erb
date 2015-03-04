@@ -1,3 +1,5 @@
 <h4>Item: <%= @item.description%></h4>
 <h4>Due Date: <%= @item.due_date %></h4>
 <h4>Complete: <%=@item.status %></h4>
+
+<%= button_to "Change Due Date", edit_item_path(@item), method: :get%> 

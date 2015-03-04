@@ -1,0 +1,6 @@
+<h4>All Tasks</h4>
+<ul>
+<% @items.each do |item| %>
+<li><%= link_to "#{item.description}", item_path(item) %></li>
+  <% end %>
+</ul>

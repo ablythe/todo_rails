@@ -1,4 +1,5 @@
 class ItemController < ApplicationController
+  before_action :authenticate_user!
   def new
     @item = Item.new
   end
@@ -7,10 +8,26 @@ class ItemController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def update
+    @item = Item.find(params[:id])
+    item_params =params[:item]
+    date = Item.package_date item_params
+    if @item.update due_date: date
+      flash[:notice] = "Item Updated"
+      redirect_to item_path(@item)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
   def create
     list = List.find(params[:list_id])
     item_params = params[:item]
-    date = DateTime.new(item_params["due_date(1i)"].to_i,item_params["due_date(2i)"].to_i, item_params["due_date(3i)"].to_i)
+    date = Item.package_date item_params
     @item = list.items.new description: params[:item][:description], user_id: current_user.id, due_date: date
     if @item.save
       flash[:notice] = "Item Created"
@@ -18,6 +35,15 @@ class ItemController < ApplicationController
     else
       render :new
     end
+  end
+
+  def list
+    @list = List.find(params[:list_id])
+    @items = @list.items.all
+  end
+
+  def index
+    @items = current_user.items.all
   end
 
 

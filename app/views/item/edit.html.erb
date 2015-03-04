@@ -1,0 +1,7 @@
+<h4>Item: <%= @item.description%></h4>
+<p>Change Due Date:</p>
+<%=form_for @item do |f| %>
+<%=f.label :due_date %>
+<%= f.date_select :due_date %>
+<button>Update</button>
+<% end %>
