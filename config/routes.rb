@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete "lists/:id/delete" => 'list#delete'
 
  get "lists/:list_id/new_item" => 'item#new', as: 'new_item'
- post 'lists/:list_id/items' => 'item#create'
+ post 'lists/:list_id/items' => 'item#create', as: 'item_create'
  get "items/:id" => 'item#show', as: "item"
  get "items/:id/edit" => 'item#edit', as: 'edit_item'
  patch "items/:id" => 'item#update', as: 'update_item'

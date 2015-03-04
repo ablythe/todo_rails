@@ -2,6 +2,7 @@ class ItemController < ApplicationController
   before_action :authenticate_user!
   def new
     @item = Item.new
+    @list = List.find(params[:list_id])
   end
 
   def show
@@ -12,7 +13,7 @@ class ItemController < ApplicationController
     @item = Item.find(params[:id])
     item_params =params[:item]
     date = Item.package_date item_params
-    if @item.update due_date: date
+    if @item.update due_date: date, status: item_params[:status]
       flash[:notice] = "Item Updated"
       redirect_to item_path(@item)
     else

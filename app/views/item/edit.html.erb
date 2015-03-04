@@ -3,5 +3,9 @@
 <%=form_for @item do |f| %>
 <%=f.label :due_date %>
 <%= f.date_select :due_date %>
+<%= f.radio_button(:status, "false")%>
+<%= f.label(:false, "Incomplete") %>
+<%= f.radio_button(:status, "true")%>
+<%= f.label(:true, "Complete") %>
 <button>Update</button>
 <% end %>
