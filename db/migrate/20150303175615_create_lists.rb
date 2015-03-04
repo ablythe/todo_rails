@@ -6,6 +6,6 @@ class CreateLists < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :lists, :users
+    # add_foreign_key :lists, :users
   end
 end

@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :items, :users
+    # add_foreign_key :items, :users
     add_foreign_key :items, :lists
   end
 end
